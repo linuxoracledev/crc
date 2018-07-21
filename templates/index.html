@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+    <div class="content">
+        <div class="section-inner clearfix">
+            <h1>{{ headlines }}</h1>
+
+              <p>Get real time currency rate and convert one currecny rate to another currecny</p>
+
+              <form action="{{ url_for('convert_currency')}}" method="post">
+                <select name = defaultbase>
+                {% for key, value in data.items() %}
+                  {% if value is mapping %}
+                       {% for k, v in value.items() %}
+                        <option value= "{{  k }}">{{ k }}</option>
+                       {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                <option value="USD" selected>USD</option>
+              </select>
+              To
+              <select name = askingbase>
+              {% for key, value in data.items() %}
+                {% if value is mapping %}
+                     {% for k, v in value.items() %}
+                      <option value= "{{  k }}">{{ k }}</option>
+                     {% endfor %}
+                {% endif %}
+              {% endfor %}
+              <option value="BDT" selected>BDT</option>
+            </select>
+                <button>Convert</button>
+              </form>
+
+              <p>{{ conversion }}</p>
+              <a href = "{{ url_for('all_currency') }}" target="_blank">Show All Currency</a>
+          </div>
+       </div>
+  {% endblock %}

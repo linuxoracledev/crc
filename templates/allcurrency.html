@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+    <h1>All Currecny</h1>
+
+    <p>Get real time currency rate and convert one currecny rate to another currecny. Here
+    timestamp is a standard UNIX time stamp indicating the time the given exchange rate data was
+    collected, date the given exchange rate data was collected
+  </p>
+    <table>
+      <tr>
+      <td>BASE CURRENCY</td><td>:</td><td> {{ basecurrency }}  (1 EUR = {{ baserate }} {{ basecurrency }} )</td>
+    </tr>
+    <td>TIMESTAMP(UTC)</td><td>:</td><td> {{ tstamp }}</td>
+  </tr>
+
+      {% for key, value in data.items() %}
+      <tr>
+          {% if key|upper == "DATE"  or key|upper == "TIMESTAMP"  %}
+           <td>{{ key|upper }}</td> <td>:</td><td>{{ value }} </td>
+          {% endif %}
+     </tr>
+     {% endfor %}
+     <tr>
+      <td colspan="3"><hr></td>
+   </tr>
+
+    {% for key, value in data.items() %}
+      {% if value is mapping %}
+           {% for k, v in value.items() %}
+            <tr border="1">
+              <td>{{ k }}</td>
+              <td>:</td>
+              <td>
+                {% if  baserate >= 1 %}
+                   {{  (v  / baserate)|round(6) }}
+                {% else %}
+                   {{ (baserate * v)|round(6) }}
+                 {% endif %}
+              </td>
+            </tr>
+           {% endfor %}
+       {% endif %}
+    {% endfor %}
+  </table>
+{% endblock %}
