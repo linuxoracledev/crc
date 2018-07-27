@@ -1,40 +1,51 @@
 {% extends 'base.html' %}
 
     {% block content %}
-
-    <div class="content">
-        <div class="section-inner clearfix">
-            <h1>{{ headlines }}</h1>
-
-              <p>Get real time currency rate and convert one currecny rate to another currecny</p>
-
-              <form action="{{ url_for('convert_currency')}}" method="post">
-                <select name = defaultbase>
-                {% for key, value in data.items() %}
-                  {% if value is mapping %}
-                       {% for k, v in value.items() %}
-                        <option value= "{{  k }}">{{ k }}</option>
-                       {% endfor %}
-                  {% endif %}
-                {% endfor %}
-                <option value="USD" selected>USD</option>
-              </select>
-              To
-              <select name = askingbase>
-              {% for key, value in data.items() %}
-                {% if value is mapping %}
-                     {% for k, v in value.items() %}
-                      <option value= "{{  k }}">{{ k }}</option>
-                     {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 formcontainer">
+            <div class="formbox">
+              <div class="center">
+                <p>Get real time currency rate and convert one currecny rate to another currecny. </p>
+                <h3>{{ conversion }}</h3>
+                {% if submit != "" %}
+                <a href = "{{ url_for('all_currency') }}">Show All Currency</a>
                 {% endif %}
-              {% endfor %}
-              <option value="BDT" selected>BDT</option>
-            </select>
-                <button>Convert</button>
-              </form>
+              </div>
+                <form action="{{ url_for('convert_currency') }}" method="post" role="form">
+                    <div class="form-group"> <input type="text" name="qty" value=1 size="9" maxlength="9" class="form-control"></div>
+                    <div class="form-group">
+                        <select name = defaultbase class="form-control">
+                            {% for key, value in data.items() %}
+                                {% if value is mapping %}
+                                    {% for k, v in value.items() %}
+                                        <option value= "{{  k }}">{{ k }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            <option value="USD" selected>USD</option>
+                        </select>
+                    </div>
 
-              <p>{{ conversion }}</p>
-              <a href = "{{ url_for('all_currency') }}" target="_blank">Show All Currency</a>
-          </div>
-       </div>
+                    <div class="form-group">
+                        <select name = askingbase class="form-control">
+                            {% for key, value in data.items() %}
+                                {% if value is mapping %}
+                                    {% for k, v in value.items() %}
+                                        <option value= "{{  k }}">{{ k }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            <option value="BDT" selected>BDT</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"><button class="btn convertbtn">Convert</button></div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
   {% endblock %}

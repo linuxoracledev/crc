@@ -1,34 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Currency Current Rate | Currency Conversion | Forex {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 </head>
 <body>
-    <div class="navbar">
-        <div class="section-inner clearfix">
-            <nav>
-                <a href="/">Home</a>
-            </nav>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+          <div class="container">
+              <div class="row">
+                  <div class="logo"><a href="/">C R C</a><p>Currency Rate Converter</p></div>
+              </div>
+          </div>
+      </nav>
+      <!-- End Navbar -->
+
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="header-text"><h1>{{ headlines }}</h1></div>
+    </div>
+  </div>
+</div>
+
+<div class="centerbody">
+<div class="container">
+    <div class="row">
+        <div class="column side">
+          <p>
+            CRC is an online currency rate converter web apps. CRC collect Real-time exchange rate data for
+            170 world currencies, updated every 60 seconds using
+           <i>Fixer Foreign exchangen rates and currency conversion JSON API.</i>
+            Currency data delivered by Fixer is sourced from financial data providers and banks, including the European Central Bank.
+          </p>
+       </div>
+            <div class="column middle">
+                {% block content %} {% endblock %}
+            </div>
+            <div class="column side">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- responsive -->
+                  <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8289078927155927"
+                     data-ad-slot="6986905320"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+            </div>
         </div>
     </div>
-<div class="col-lg-3 col-sm-1"></div>
-<div class="col-lg-6 col-sm-10">
-    {% block content %}
+</div>
+</div>
 
-    {% endblock %}
+<div class="footer">
+  <div class="container">
+    <div class="row">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- responsive -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-8289078927155927"
+               data-ad-slot="6986905320"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+      <p>&copy; <a href="http://arshin-tech.com" target="_blank">ArshinTech</a></p>
     </div>
-<div class="col-lg-3 col-sm-1"></div>
-    {% block footer %}
-
-    <div class="footer">
-        <div class="section-inner clearfix">
-            <hr>
-            <p>&copy; ArshinTech</p>
-        </div>
-    </div>
-
-    {% endblock %}
+  </div>
+</div>
 
 </body>
 </html>
