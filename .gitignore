@@ -3,6 +3,5 @@
 __pycache__
 crcvenv
 db.sqlite3
-/static
 .DS_Store
 flask_session
