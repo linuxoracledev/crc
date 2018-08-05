@@ -5,35 +5,39 @@
     <div class="row">
         <div class="col-lg-12 col-sm-12 formcontainer">
             <div class="formbox">
-                <p>Here timestamp is a standard UNIX time stamp indicating the time the given exchange rate data was
-                collected, date the given exchange rate data was collected
-              </p>
                 <table>
-                  <tr>
-                  <td>BASE CURRENCY</td><td> : </td><td> {{ basecurrency }}  (1 EUR = {{ baserate }} {{ basecurrency }} )</td>
+
+                    <tr>
+                      <td><span class="theader">BASE CURRENCY </span></td><td> : </td><td><span class="theader"> {{ basecurrency }}  (1 EUR = {{ baserate }} {{ basecurrency }} )</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="theader">TIMESTAMP(UTC)</span></td><td> : </td><td><span class="theader"> {{ tstamp }}</span></td>
+                    </tr>
+
+                    {% for key, value in data.items() %}
+                    <tr>
+                        {% if key|upper == "DATE" %}
+                         <td><span class="theader">{{ key|upper }}</span></td> <td> : </td><td><span class="theader">{{ value }}</span> </td>
+                        {% endif %}
+                      {% if key|upper == "TIMESTAMP"  %}
+                         <td><span class="theader">{{ key|upper }}(Unix)</span></td> <td> : </td><td><span class="theader">{{ value }} </span></td>
+                        {% endif %}
+
+                   </tr>
+                   {% endfor %}
+
+                <tr>
+                  <td colspan="3" style="text-align:left; font-size:.6em;">
+                    Here timestamp is a standard UNIX time stamp indicating the time the given exchange rate data was
+                    collected, date the given exchange rate data was collected
+
+                  </td>
                 </tr>
-                <td>TIMESTAMP(UTC)</td><td> : </td><td> {{ tstamp }}</td>
-              </tr>
-
-                  {% for key, value in data.items() %}
-                  <tr>
-                      {% if key|upper == "DATE" %}
-                       <td>{{ key|upper }}</td> <td> : </td><td>{{ value }} </td>
-                      {% endif %}
-                    {% if key|upper == "TIMESTAMP"  %}
-                       <td>{{ key|upper }}(Unix)</td> <td> : </td><td>{{ value }} </td>
-                      {% endif %}
-
-                 </tr>
-                 {% endfor %}
-                 <tr>
-                  <td colspan="3"><hr></td>
-               </tr>
 
                 {% for key, value in data.items() %}
                   {% if value is mapping %}
                        {% for k, v in value.items() %}
-                        <tr border="1">
+                        <tr>
                           <td>{{ k }}</td>
                           <td> : </td>
                           <td>

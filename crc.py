@@ -29,21 +29,22 @@ def convert_currency():
     headline = "Foreign exchange rates and currency conversion apps | CRC"
     userdbase   = request.form.get("defaultbase")
     userabase   = request.form.get("askingbase")
-    quantity    = int(request.form.get("qty"))
+    quantity    = float(request.form.get("qty"))
 
     if not quantity:
-        quantity = 1
+        quantity = 1.00
 
     userdbaser  = float(data["rates"][userdbase])
     userabaser  = float(data["rates"][userabase])
     session["baserate"]     = userdbaser
     session["basecurrency"] = userdbase
-
-    if userdbaser >= 1:
+    rate = round(round(userabaser/userdbaser,9) * quantity, 6)
+    """
+    if userabaser > userdbaser:
         rate = round(userabaser/userdbaser * quantity, 6)
-    else:
+    elif userdbaser < userabaser::
         rate = round(userabaser*userdbaser * quantity, 6)
-
+    """
     conversion = f"{ quantity } {userdbase} = {rate} {userabase}"
     return render_template("index.html", headlines=headline, conversion = conversion, data = data)
 
