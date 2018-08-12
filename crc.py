@@ -21,12 +21,12 @@ tstamp = datetime.datetime.fromtimestamp(int(unixdt)).strftime('%Y-%m-%d %H:%M:%
 
 @app.route("/")
 def index():
-    headline = "Foreign exchange rates and currency conversion apps | CRC"
+    headline = "Live foreign exchange rates and currency conversion apps | CRC"
     return render_template("index.html", headlines = headline, data = data, submit=submit)
 
 @app.route("/", methods = ["POST"])
 def convert_currency():
-    headline = "Foreign exchange rates and currency conversion apps | CRC"
+    headline = "Live foreign exchange rates and currency conversion apps | CRC"
     userdbase   = request.form.get("defaultbase")
     userabase   = request.form.get("askingbase")
     quantity    = float(request.form.get("qty"))

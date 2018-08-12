@@ -21,7 +21,7 @@ table tr td     { padding: 1px 5px;}
 .center         { text-align: center;}
 .convertbtn     { float: right; border: 1px solid #42bff4 !important;}
 .convertbtn:hover{border: 1px solid #5c42f4 !important; background-color: #fff; color:green;}
-.formcontainer  { max-width: 400px; min-width: 50%; width: 60%; border: medium none !important; margin: 0 auto;}
+.formcontainer  { border: medium none !important; margin: 0 auto;}
 .formbox        { background: #F9F9F9; padding: 25px; box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); color: #222;}
 .formbox  a     { color:green; font-weight: 700;text-decoration: underline;}
 .formbox  h3    { color:blue; font-weight: 700;}
@@ -33,9 +33,10 @@ table tr td     { padding: 1px 5px;}
 /*Layout*/
 *               { box-sizing: border-box;}
 .header         { background-color: #f1f1f1; padding: 20px; text-align: center; font-size: 3em;}
-.header-text    { width: 50%; margin: 0 auto; text-align: center;}
-.column         { float: left; min-height: 400px;}
+.header-text    { width: 100%; margin: 0 auto; text-align: center;}
+.column         { float: left;}
 .column.side    { width: 25%; }
+.column.side p  { padding: 0 10px;}
 .column.middle  { width: 50%; }
 .row:after      { content: ""; display: table; clear: both;}
 .footer         { background-color: #22303e; text-align: center; padding: 10px; width:100%;}
@@ -44,8 +45,8 @@ table tr td     { padding: 1px 5px;}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 768px) {
     .column         { padding: 0px; min-height: 100px;}
-    .column.middle  { width: 100%;}
-    .column.side    { display: none; }
+    .column.middle  { width: 100%; order-1;}
+    .column.side    { width: 100%;}
     .header   h1    { padding:1px; font-size: .4em; }
     .formbox  h3    { font-size: 1em; }
     .header-text    { width: 100%;}
