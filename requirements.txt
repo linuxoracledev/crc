@@ -10,7 +10,7 @@ Jinja2==2.10
 MarkupSafe==1.0
 pipenv==2018.7.1
 requests==2.19.1
-urllib3==1.23
+urllib3==1.26.5
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
 Werkzeug==0.14.1
